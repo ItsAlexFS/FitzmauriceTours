@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Fitzmaurice Tours</title>
+        <meta charset="UTF-8">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let language = localStorage.getItem("language");
+
+                if (!language) {
+                    localStorage.setItem("language", "en");
+                }
+            });
+                const translations = {
+                    en: {
+                        maintenanceTitle: "Sorry! We are on maintenance.",
+                        maintenanceSubtitle: "We are preparing something amazing for you. In the meantime, you can contact us via:",
+                        emailUs: "Or email us at:"
+                    },  
+                    es: {
+                        maintenanceTitle: "¡Lo sentimos! Estamos en mantenimiento.",
+                        maintenanceSubtitle: "Estamos preparando algo increíble para ti. Mientras tanto, puedes contactarnos por:",
+                        emailUs: "O envíanos un correo a:"
+                    }
+                };
+                
+
+            function applyLanguage(lang) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    el.textContent = translations[lang][key];
+                });
+            }
+
+            function setLanguage(lang) {
+                localStorage.setItem('language', lang);
+                applyLanguage(lang);
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const lang = localStorage.getItem("language") || "en";
+                applyLanguage(lang);
+            });
+        </script>
+    </head>
+    <body>
+        <div class="language-toggle">
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('es')">Español</button>
+        </div>
+        <main class="maintenance-container">
+            <img src="/assets/Logo.jpg" alt="Fitzmaurice Tours Logo" class="logo"/>
+            <h1 data-i18n="maintenanceTitle">Sorry! We are on maintenance.</h1>
+            <h3 data-i18n="maintenanceSubtitle">We are preparing something amazing for you. In the meantime, you can contact us via:</h3>
+                <div class ="contact-info">
+                    <a href="https://www.facebook.com/fitzmauricetoursmexico" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png"></a>
+                    <a href="https://www.instagram.com/bestmexicotrips/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1024px-Instagram_logo_2016.svg.png"></a>
+                    <a href="https://x.com/BestMexicoTours" target="_blank"><img src="https://img.freepik.com/vector-gratis/nuevo-diseno-icono-x-logotipo-twitter-2023_1017-45418.jpg?semt=ais_hybrid&w=740"></a>
+                </div>
+            <h3 data-i18n="emailUs">Or email us at:</h3>
+            <a class="email" href="mailto:info@fitzmauricetoursmexico.com">info@fitzmauricetoursmexico.com</a>
+        </main>
+    </body>
+</html>
