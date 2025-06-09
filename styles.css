@@ -1,8 +1,13 @@
+@font-face{
+    font-family: 'Segoe UI';
+    src: url(/assets/Segoe\ UI\ Bold.ttf);
+}
+
 html, body {
     height: 100%;
     margin: 0;
     background-color: #edab30;
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .maintenance-container {
