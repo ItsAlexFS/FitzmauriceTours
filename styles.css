@@ -19,8 +19,8 @@ html, body {
     
 }
 .logo {
-    width: 150px;
-    height: 150px;
+    width: 500px;
+    height: 260px;
 }
 .contact-info {
     display: flex;
